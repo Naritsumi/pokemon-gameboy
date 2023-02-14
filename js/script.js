@@ -7,8 +7,10 @@ let attack2sfx = new Audio('./assets/sfx/pokemonattackeffect2.mp3');
 
 let playerPokemon;
 let enemyPokemon;
-
 var i = 0;
+var x = 0;
+var battleText1 = '';
+var battleText2 = '';
 var txt = 'You can\'t SCAPE!';
 var speed = 50;
 
@@ -19,11 +21,12 @@ function startButton() {
 	document.getElementById('battle').style.visibility = 'visible';
 	document.getElementById('opening').style.zIndex = '1';
 	titlesfx.play();
+	titlesfx.volume = 0.4;
 	setTimeout(function () {
 		titlesfx.pause();
 		transition();
 		//}, 9000);
-	}, 9000);
+	}, 0);
 }
 
 function transition() {
@@ -34,13 +37,13 @@ function transition() {
 		battlesfx.play();
 		battlesfx.volume = 0.2;
 		//}, 1000);
-	}, 1000);
+	}, 0);
 
 	setTimeout(function () {
 		document.getElementById('black').style.zIndex = '-1';
 		initGame();
 		//}, 3800)	
-	}, 3800)
+	}, 0)
 }
 
 //Starts the game and sets the beginning pokemon at random
@@ -146,11 +149,19 @@ function attack1() {
 	document.getElementById('menu').style.zIndex = '1';
 	document.getElementById('battletext').style.zIndex = '1';
 
-	document.getElementById('battletext').innerHTML = (playerPokemon.pokename + ' used ' + playerPokemon.moves[0].name + '!');
+	battleText1 = playerPokemon.pokename + ' used ' + playerPokemon.moves[0].name + '!';
+
+	writeAttack1();
+
 	setTimeout(function () {
 		//enemyPokemon.attack(playerPokemon, enemyPokemon.moves[attackMove]);
 		if (playerPokemon.moves[0].target != 'self') {
-			attack1sfx.play();
+			//attack1sfx.play();
+			if (playerPokemon.moves[0].damage >= 40) {
+				attack1sfx.play();
+			} else {
+				attack2sfx.play();
+			}
 			document.getElementById('pkmn').style.animation = 'blink 0.15s 5';
 			//se ejecuta al pasar 1
 			setTimeout(function () {
@@ -166,9 +177,18 @@ function attack1() {
 			showPokemon();
 			enemyAttack();
 			addListeners();
+			x = 0;
+			document.getElementById('battletext').innerHTML = '';
 		}, 1000);
-		//document.getElementById('battletext').innerHTML = '';
 	}, 2800);
+}
+
+function writeAttack1() {
+	if (x < battleText1.length) {
+		document.getElementById('battletext').innerHTML += battleText1.charAt(x);
+		x++;
+		setTimeout(writeAttack1, speed);
+	}
 }
 
 function attack2() {
@@ -183,10 +203,18 @@ function attack2() {
 	document.getElementById('menu').style.zIndex = '1';
 	document.getElementById('battletext').style.zIndex = '1';
 
-	document.getElementById('battletext').innerHTML = (playerPokemon.pokename + ' used ' + playerPokemon.moves[1].name + '!');
+	//document.getElementById('battletext').innerHTML = (playerPokemon.pokename + ' used ' + playerPokemon.moves[1].name + '!');
+	battleText2 = playerPokemon.pokename + ' used ' + playerPokemon.moves[1].name + '!';
+
+	writeAttack2();
+
 	setTimeout(function () {
 		if (playerPokemon.moves[1].target != 'self') {
-			attack1sfx.play();
+			if (playerPokemon.moves[1].damage >= 40) {
+				attack1sfx.play();
+			} else {
+				attack2sfx.play();
+			}
 			document.getElementById('pkmn').style.animation = 'blink 0.15s 5';
 			//Reset sprite
 			setTimeout(function () {
@@ -200,6 +228,8 @@ function attack2() {
 			showPokemon();
 			enemyAttack();
 			addListeners();
+			x = 0;
+			document.getElementById('battletext').innerHTML = '';
 		}, 1000);
 		/*
 		removeListeners();
@@ -209,6 +239,14 @@ function attack2() {
 		//document.getElementById('battletext').style.zIndex = '-1';
 		document.getElementById('battletext').innerHTML = ('');
 	}, 3000);
+}
+
+function writeAttack2() {
+	if (x < battleText2.length) {
+		document.getElementById('battletext').innerHTML += battleText2.charAt(x);
+		x++;
+		setTimeout(writeAttack2, speed);
+	}
 }
 
 function enemyAttack() {
@@ -232,12 +270,27 @@ function enemyAttack() {
 
 			playerPokemon.faint(playerPokemon, playerParty);
 		}
+
 		setTimeout(function () {
 			showPokemon();
+			x = 0;
+			document.getElementById('battletext').innerHTML = '';
+		}, 1000);
+
+		setTimeout(function () {
 			document.getElementById('menu').style.zIndex = '-1';
 			document.getElementById('battletext').style.zIndex = '-1';
-		}, 1200);
+		}, 2000);
+
 	}, 3000);
+}
+
+function writeEnemyAttack() {
+	if (x < battleText2.length) {
+		document.getElementById('battletext').innerHTML += battleText2.charAt(i);
+		i++;
+		setTimeout(writeEnemyAttack, speed);
+	}
 }
 
 function addListeners() {
