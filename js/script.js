@@ -20,7 +20,7 @@ function startButton() {
 		titlesfx.pause();
 		transition();
 		//}, 9000);
-	}, 0);
+	}, 9000);
 }
 
 function transition() {
@@ -30,13 +30,13 @@ function transition() {
 	setTimeout(function () {
 		battlesfx.play();
 		//}, 1000);
-	}, 0);
+	}, 1000);
 
 	setTimeout(function () {
 		document.getElementById('black').style.zIndex = '-1';
 		initGame();
 		//}, 3800)	
-	}, 0)
+	}, 3800)
 }
 
 //Starts the game and sets the beginning pokemon at random
@@ -154,7 +154,7 @@ function attack1() {
 		}, 1000);
 		showPokemon();
 		document.getElementById('battletext').style.zIndex = '-1';
-	}, 2600);
+	}, 2500);
 }
 
 function attack2() {
@@ -186,7 +186,7 @@ function attack2() {
 		}, 1000);
 		showPokemon();		
 		document.getElementById('battletext').style.zIndex = '-1';
-	}, 2600);
+	}, 2500);
 }
 
 function enemyAttack() {
@@ -210,7 +210,7 @@ function enemyAttack() {
 		playerPokemon.faint(playerPokemon, playerParty);
 		document.getElementById('pkmnbattlemenu').style.zIndex = '-1';
 		document.getElementById('battletext').style.zIndex = '-1';
-	}, 2700);
+	}, 2600);
 }
 
 
