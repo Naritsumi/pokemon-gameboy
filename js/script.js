@@ -149,22 +149,23 @@ function attack1() {
 	document.getElementById('battletext').innerHTML = (playerPokemon.pokename + ' used ' + playerPokemon.moves[0].name + '!');
 	setTimeout(function () {
 		//enemyPokemon.attack(playerPokemon, enemyPokemon.moves[attackMove]);
-		if (playerPokemon.moves[0].target != 'self') {			
+		if (playerPokemon.moves[0].target != 'self') {
 			attack1sfx.play();
 			document.getElementById('pkmn').style.animation = 'blink 0.15s 5';
+			//se ejecuta al pasar 1
 			setTimeout(function () {
 				document.getElementById('pkmn').style.animation = '';
+				enemyPokemon.faint(enemyPokemon, enemyParty);
 			}, 1000);
+			//console.log('health:'+enemyPokemon.health);
+			//enemyPokemon.faint(enemyPokemon, enemyParty);
 		}
-		enemyPokemon.faint(enemyPokemon, enemyParty);
 		removeListeners();
-		setTimeout(function () {
-			enemyAttack();
-			addListeners();
-		}, 1000);
 		showPokemon();
-		document.getElementById('battletext').style.zIndex = '-1';
-	}, 2500);
+		enemyAttack();
+		addListeners();
+		//document.getElementById('battletext').innerHTML = '';
+	}, 2800);
 }
 
 function attack2() {
@@ -175,50 +176,40 @@ function attack2() {
 	document.getElementById('attack2').style.zIndex = '-1';
 	document.getElementById('b2').src = "";
 
-	//document.getElementById('pkmnbattlemenu').src = './assets/img/pkmnbattle.png';
-	//document.getElementById('pkmnbattlemenu').style.zIndex = '1';
-	//document.getElementById('battletext').style.zIndex = '1';
-
 	document.getElementById('menu').src = './assets/img/pkmnbattle.png';
 	document.getElementById('menu').style.zIndex = '1';
 	document.getElementById('battletext').style.zIndex = '1';
 
-	//document.getElementById('battletext').innerHTML = (playerPokemon.pokename + ' used ' + playerPokemon.moves[1].name + '!');
-	document.getElementById('text').innerHTML = (playerPokemon.pokename + ' used ' + playerPokemon.moves[1].name + '!');
+	document.getElementById('battletext').innerHTML = (playerPokemon.pokename + ' used ' + playerPokemon.moves[1].name + '!');
 	setTimeout(function () {
 		if (playerPokemon.moves[1].target != 'self') {
-			//console.log('enemy hit');						
 			attack1sfx.play();
 			document.getElementById('pkmn').style.animation = 'blink 0.15s 5';
+			//Reset sprite
 			setTimeout(function () {
 				document.getElementById('pkmn').style.animation = '';
+				enemyPokemon.faint(enemyPokemon, enemyParty);
 			}, 1000);
 		}
-		//console.log(enemyPokemon.health);
-		enemyPokemon.faint(enemyPokemon, enemyParty);
 		removeListeners();
-		setTimeout(function () {
-			enemyAttack();
-			addListeners();
-		}, 1000);
-		showPokemon();		
-		document.getElementById('battletext').style.zIndex = '-1';
-		//document.getElementById('battletext').innerHTML = ('');
-	}, 2500);
+		showPokemon();
+		enemyAttack();
+		addListeners();
+		//document.getElementById('battletext').style.zIndex = '-1';
+		document.getElementById('battletext').innerHTML = ('');
+	}, 3000);
 }
 
 function enemyAttack() {
 	var attackMove = Math.floor(Math.random() * enemyPokemon.moves.length);
 
-	//document.getElementById('pkmnbattlemenu').src = './assets/img/pkmnbattle.png';
-	//document.getElementById('pkmnbattlemenu').style.zIndex = '1';
 	document.getElementById('menu').src = './assets/img/pkmnbattle.png';
 	document.getElementById('menu').style.zIndex = '1';
 	document.getElementById('battletext').style.zIndex = '1';
-
-	//console.log('attacked with', enemyPokemon.moves[attackMove].name);
-	document.getElementById('battletext').innerHTML = ('Enemy ' + enemyPokemon.pokename + ' used ' + enemyPokemon.moves[attackMove].name + '!');
-	//document.getElementById('text').innerHTML = ('Enemy ' + enemyPokemon.pokename + ' used ' + enemyPokemon.moves[attackMove].name + '!');
+	setTimeout(function () {
+		document.getElementById('battletext').innerHTML = ('Enemy ' + enemyPokemon.pokename + ' used ' + enemyPokemon.moves[attackMove].name + '!');
+	}, 1200);
+	//document.getElementById('battletext').innerHTML = ('Enemy ' + enemyPokemon.pokename + ' used ' + enemyPokemon.moves[attackMove].name + '!');
 	setTimeout(function () {
 		enemyPokemon.attack(playerPokemon, enemyPokemon.moves[attackMove]);
 		if (enemyPokemon.moves[attackMove].target != 'self') {
@@ -227,13 +218,15 @@ function enemyAttack() {
 			setTimeout(function () {
 				document.getElementById('pkmnback').style.animation = '';
 			}, 1000);
+
+			playerPokemon.faint(playerPokemon, playerParty);
 		}
 		showPokemon();
-		playerPokemon.faint(playerPokemon, playerParty);
-		//document.getElementById('pkmnbattlemenu').style.zIndex = '-1';
-		document.getElementById('menu').style.zIndex = '-1';
-		document.getElementById('battletext').style.zIndex = '-1';
-	}, 2600);
+		setTimeout(function () {
+			document.getElementById('menu').style.zIndex = '-1';
+			document.getElementById('battletext').style.zIndex = '-1';
+		}, 1200);
+	}, 3000);
 }
 
 function addListeners() {

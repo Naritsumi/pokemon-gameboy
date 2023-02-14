@@ -42,6 +42,7 @@ class Pokemon {
 		if (this.health <= 0) {
 			console.log('fainted!');
 			this.alive = false;
+			
 			for (var i = 0; i < party.length; i++) {
 				if (party[i].alive == true) {
 					foundPokemon = true;
@@ -50,6 +51,7 @@ class Pokemon {
 					break;
 				}
 			}
+
 			if (foundPokemon == false) {
 				endGame();
 			}
