@@ -318,8 +318,12 @@ button:focus {
 	z-index: -1;
 }
 
+#runmenu {
+	position: relative;
+	top: -180px;
+}
 
-#runmenu, #pkmnbattlemenu {
+#pkmnbattlemenu {
 	position: relative;
 	top: -180px;
 }
@@ -348,7 +352,7 @@ button:focus {
 	background: transparent;
 	border: none !important;
 	width: 500px;
-	top: 325px;
+	top: 340px;
 	left: 25px;
 	text-align: left;
 	line-height: 50px;
