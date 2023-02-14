@@ -23,7 +23,7 @@ function startButton() {
 		titlesfx.pause();
 		transition();
 		//}, 9000);
-	}, 0);
+	}, 9000);
 }
 
 function transition() {
@@ -34,13 +34,13 @@ function transition() {
 		battlesfx.play();
 		battlesfx.volume = 0.2;
 		//}, 1000);
-	}, 0);
+	}, 1000);
 
 	setTimeout(function () {
 		document.getElementById('black').style.zIndex = '-1';
 		initGame();
 		//}, 3800)	
-	}, 0)
+	}, 3800)
 }
 
 //Starts the game and sets the beginning pokemon at random
