@@ -194,10 +194,18 @@ function attack2() {
 				enemyPokemon.faint(enemyPokemon, enemyParty);
 			}, 1000);
 		}
+
+		setTimeout(function () {
+			removeListeners();
+			showPokemon();
+			enemyAttack();
+			addListeners();
+		}, 1000);
+		/*
 		removeListeners();
 		showPokemon();
 		enemyAttack();
-		addListeners();
+		addListeners();*/
 		//document.getElementById('battletext').style.zIndex = '-1';
 		document.getElementById('battletext').innerHTML = ('');
 	}, 3000);
