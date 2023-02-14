@@ -169,8 +169,6 @@ button:focus {
 	position: relative;
 	left: 16px;
 	top: 152px;	
-    transform: translateX(-100%);
-    -webkit-transform: translateX(-100%);
 }
 
 #pkmn {
@@ -322,7 +320,8 @@ button:focus {
 
 
 #runmenu {
-	position: absolute;
+	position: relative;
+	top: -180px;
 }
 
 #runtext {
@@ -346,10 +345,26 @@ button:focus {
 }
     
 @keyframes slide-in {
-    100% { transform: translateX(0%); }
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(10%); }
 }
 
 @-webkit-keyframes slide-in {
-    100% { -webkit-transform: translateX(0%); }
+    0% { -webkit-transform: translateX(0%); }
+    100% { -webkit-transform: translateX(-100%); }
 }
-    
+  
+.slide-out {
+    animation: slide-out 0.5s forwards;
+    -webkit-animation: slide-out 0.5s forwards;
+}
+
+@keyframes slide-out {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-25%); }
+}
+
+@-webkit-keyframes slide-out {
+    0% { -webkit-transform: translateX(0%); }
+    100% { -webkit-transform: translateX(-100%); }
+}
