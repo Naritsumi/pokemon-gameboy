@@ -160,10 +160,13 @@ function attack1() {
 			//console.log('health:'+enemyPokemon.health);
 			//enemyPokemon.faint(enemyPokemon, enemyParty);
 		}
-		removeListeners();
-		showPokemon();
-		enemyAttack();
-		addListeners();
+
+		setTimeout(function () {
+			removeListeners();
+			showPokemon();
+			enemyAttack();
+			addListeners();
+		}, 1000);
 		//document.getElementById('battletext').innerHTML = '';
 	}, 2800);
 }
@@ -221,8 +224,8 @@ function enemyAttack() {
 
 			playerPokemon.faint(playerPokemon, playerParty);
 		}
-		showPokemon();
 		setTimeout(function () {
+			showPokemon();
 			document.getElementById('menu').style.zIndex = '-1';
 			document.getElementById('battletext').style.zIndex = '-1';
 		}, 1200);
