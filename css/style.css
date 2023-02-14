@@ -318,7 +318,9 @@ button:focus {
 	z-index: -1;
 }
 
-#runmenu {
+/*
+#runmenu {*/
+#menu {
 	position: relative;
 	top: -180px;
 }
@@ -327,8 +329,9 @@ button:focus {
 	position: relative;
 	top: -180px;
 }
-
-#runtext {
+/*
+#runtext {*/
+#text {
 	position: absolute;
 	font-family: 'pokemon-font', monospace;
 	font-size: 25px;
@@ -342,7 +345,6 @@ button:focus {
 	line-height: 50px;
 	z-index: -1;
 }
-
 
 #battletext {
 	position: absolute;
