@@ -17,3 +17,5 @@ TIP: The only way to heal is by using REST. The only Pokemon with that ability a
 Notes:
 
 - https://stackoverflow.com/questions/16989585/css-3-slide-in-from-left-transition
+
+- [ ] Fainted msg
