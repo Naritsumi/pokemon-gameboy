@@ -319,7 +319,7 @@ button:focus {
 }
 
 
-#runmenu {
+#runmenu, #pkmnbattlemenu {
 	position: relative;
 	top: -180px;
 }
@@ -333,6 +333,22 @@ button:focus {
 	border: none !important;
 	width: 500px;
 	top: 352px;
+	left: 25px;
+	text-align: left;
+	line-height: 50px;
+	z-index: -1;
+}
+
+
+#battletext {
+	position: absolute;
+	font-family: 'pokemon-font', monospace;
+	font-size: 25px;
+	color: #282d00;
+	background: transparent;
+	border: none !important;
+	width: 500px;
+	top: 325px;
 	left: 25px;
 	text-align: left;
 	line-height: 50px;

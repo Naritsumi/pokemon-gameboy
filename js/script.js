@@ -107,7 +107,7 @@ function runButton() {
 		document.getElementById('runtext').style.zIndex = '-1';
 		document.getElementById('runtext').textContent = '';
 		i = 0;
-	}, 2800);
+	}, 2500);
 
 }
 
@@ -120,6 +120,7 @@ function writeScape() {
 }
 
 function cancelButton() {
+	document.getElementById('b2').src = '';
 	document.getElementById('attackcancel').style.zIndex = '-1';
 	document.getElementById('attack1').style.zIndex = '-1';
 	document.getElementById('attack2').style.zIndex = '-1';
@@ -172,17 +173,28 @@ function attack2() {
 
 function enemyAttack() {
 	var attackMove = Math.floor(Math.random() * enemyPokemon.moves.length);
+
+	document.getElementById('pkmnbattlemenu').src = './assets/img/pkmnrun.png';
+	document.getElementById('pkmnbattlemenu').style.zIndex = '1';
+	document.getElementById('battletext').style.zIndex = '1';
+
 	console.log('attacked with', enemyPokemon.moves[attackMove].name);
-	enemyPokemon.attack(playerPokemon, enemyPokemon.moves[attackMove]);
-	if (enemyPokemon.moves[attackMove].target != 'self') {		
-		document.getElementById('pkmnback').style.animation = 'blink 0.15s 5';
-		setTimeout(function () {
-			document.getElementById('pkmnback').style.animation = '';
-		}, 1000);
-	}
-	showPokemon();
-	playerPokemon.faint(playerPokemon, playerParty);
+	document.getElementById('battletext').innerHTML = ('Attacked with ' + enemyPokemon.moves[attackMove].name);
+	setTimeout(function () {
+		enemyPokemon.attack(playerPokemon, enemyPokemon.moves[attackMove]);
+		if (enemyPokemon.moves[attackMove].target != 'self') {			
+			document.getElementById('pkmnback').style.animation = 'blink 0.15s 5';
+			setTimeout(function () {
+				document.getElementById('pkmnback').style.animation = '';
+			}, 1000);
+		}
+		showPokemon();
+		playerPokemon.faint(playerPokemon, playerParty);
+		document.getElementById('pkmnbattlemenu').style.zIndex = '-1';
+		document.getElementById('battletext').style.zIndex = '-1';
+	}, 2500);
 }
+
 
 function addListeners() {
 	document.getElementById('startbutton').addEventListener('click', startButton);
