@@ -11,7 +11,7 @@ var i = 0;
 var x = 0;
 var battleText1 = '';
 var battleText2 = '';
-var txt = 'You can\'t SCAPE!';
+var battleEnemyText = '';
 var speed = 50;
 
 addListeners();
@@ -63,7 +63,6 @@ function initGame() {
 
 	showPokemon();
 }
-
 
 function showPokemon() {
 	//console.log(enemyPokemon);
@@ -121,7 +120,8 @@ function runButton() {
 	}, 2500);
 }
 
-function writeScape() {
+function writeScape() {	
+	var txt = 'You can\'t SCAPE!';	
 	if (i < txt.length) {
 		document.getElementById('text').innerHTML += txt.charAt(i);
 		i++;
@@ -203,7 +203,6 @@ function attack2() {
 	document.getElementById('menu').style.zIndex = '1';
 	document.getElementById('battletext').style.zIndex = '1';
 
-	//document.getElementById('battletext').innerHTML = (playerPokemon.pokename + ' used ' + playerPokemon.moves[1].name + '!');
 	battleText2 = playerPokemon.pokename + ' used ' + playerPokemon.moves[1].name + '!';
 
 	writeAttack2();
@@ -256,9 +255,13 @@ function enemyAttack() {
 	document.getElementById('menu').style.zIndex = '1';
 	document.getElementById('battletext').style.zIndex = '1';
 	setTimeout(function () {
-		document.getElementById('battletext').innerHTML = ('Enemy ' + enemyPokemon.pokename + ' used ' + enemyPokemon.moves[attackMove].name + '!');
+		//document.getElementById('battletext').innerHTML = ('Enemy ' + enemyPokemon.pokename + ' used ' + enemyPokemon.moves[attackMove].name + '!');
+
+		battleEnemyText = 'Enemy ' + enemyPokemon.pokename + ' used ' + enemyPokemon.moves[attackMove].name + '!';
+
+		writeEnemyAttack();
+
 	}, 1200);
-	//document.getElementById('battletext').innerHTML = ('Enemy ' + enemyPokemon.pokename + ' used ' + enemyPokemon.moves[attackMove].name + '!');
 	setTimeout(function () {
 		enemyPokemon.attack(playerPokemon, enemyPokemon.moves[attackMove]);
 		if (enemyPokemon.moves[attackMove].target != 'self') {
@@ -286,9 +289,9 @@ function enemyAttack() {
 }
 
 function writeEnemyAttack() {
-	if (x < battleText2.length) {
-		document.getElementById('battletext').innerHTML += battleText2.charAt(i);
-		i++;
+	if (x < battleEnemyText.length) {
+		document.getElementById('battletext').innerHTML += battleEnemyText.charAt(x);
+		x++;
 		setTimeout(writeEnemyAttack, speed);
 	}
 }
