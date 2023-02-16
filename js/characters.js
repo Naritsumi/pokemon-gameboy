@@ -10,6 +10,18 @@ class Pokemon {
 		this.alive = true;
 	}
 
+	attack(target, move) {
+		if (move.target == 'self') {
+			this.decrementHealth(Math.round(this.maxhealth * move.damage));
+		} else {
+			var criticalHit = Math.floor((Math.random() * 101) + 1);		
+			if(criticalHit > 93){
+				crit = 1.5;
+			}
+			target.decrementHealth(move.damage * crit);
+			console.log(crit)
+		}
+	}
 	decrementHealth(damage) {
 		this.health -= damage;
 		if (this.health <= 0) {
@@ -24,25 +36,12 @@ class Pokemon {
 			this.health = this.maxhealth;
 		}
 	}
-	attack(target, move) {
-		if (move.target == 'self') {
-			this.decrementHealth(Math.round(this.maxhealth * move.damage));
-		} else {
-		target.decrementHealth(move.damage);
-		}
-	}
-	useItem(target, item) {
-		if (item.target == 'self') {
-			this.decrementHealth(this.maxhealth * item.damage);
-		}
-	}
 	// Faint function will pull the next pokemon in the array into the battle
 	faint(currentPokemon, party) {
 		var foundPokemon = false;
 		if (this.health <= 0) {
 			console.log('fainted!');
 			this.alive = false;
-			
 			for (var i = 0; i < party.length; i++) {
 				if (party[i].alive == true) {
 					foundPokemon = true;
@@ -56,6 +55,11 @@ class Pokemon {
 				endGame();
 			}
 			return currentPokemon;
+		}
+	}		
+	useItem(target, item) {
+		if (item.target == 'self') {
+			this.decrementHealth(this.maxhealth * item.damage);
 		}
 	}
 };
