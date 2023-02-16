@@ -13,6 +13,7 @@ var battleText1 = '';
 var battleText2 = '';
 var battleEnemyText = '';
 var speed = 50;
+var crit = 1;
 
 addListeners();
 
@@ -26,7 +27,7 @@ function startButton() {
 		titlesfx.pause();
 		transition();
 		//}, 9000);
-	}, 9000);
+	}, 0);
 }
 
 function transition() {
@@ -37,13 +38,13 @@ function transition() {
 		battlesfx.play();
 		battlesfx.volume = 0.2;
 		//}, 1000);
-	}, 1000);
+	}, 0);
 
 	setTimeout(function () {
 		document.getElementById('black').style.zIndex = '-1';
 		initGame();
 		//}, 3800)	
-	}, 3800)
+	}, 0)
 }
 
 //Starts the game and sets the beginning pokemon at random
@@ -140,6 +141,7 @@ function cancelButton() {
 function attack1() {
 	buttonsfx.play();
 	playerPokemon.attack(enemyPokemon, playerPokemon.moves[0]);
+	//aquí vemos si hace crítico o no
 	document.getElementById('attackcancel').style.zIndex = '-1';
 	document.getElementById('attack1').style.zIndex = '-1';
 	document.getElementById('attack2').style.zIndex = '-1';
@@ -150,20 +152,25 @@ function attack1() {
 	document.getElementById('battletext').style.zIndex = '1';
 
 	battleText1 = playerPokemon.pokename + ' used ' + playerPokemon.moves[0].name + '!';
+	//aquí añadir algo cuando es crit
+	if (crit == 1.5) {
+		battleText1 += " Critical move!";
+	}
 
 	writeAttack1();
 
 	setTimeout(function () {
-		//enemyPokemon.attack(playerPokemon, enemyPokemon.moves[attackMove]);
 		if (playerPokemon.moves[0].target != 'self') {
-			//attack1sfx.play();
-			if (playerPokemon.moves[0].damage >= 40) {
+			//me gustaría añadir varios tipos de sonidos, para los golpes fuertes, fuertes con crit
+			//débiles, y débiles con crit
+			//if (playerPokemon.moves[0].damage >= 40) {
+			if (crit == 1.5) {
 				attack1sfx.play();
 			} else {
 				attack2sfx.play();
 			}
 			document.getElementById('pkmn').style.animation = 'blink 0.15s 5';
-			//se ejecuta al pasar 1
+			//se ejecuta al pasar 1seg
 			setTimeout(function () {
 				document.getElementById('pkmn').style.animation = '';
 				enemyPokemon.faint(enemyPokemon, enemyParty);
