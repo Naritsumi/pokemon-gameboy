@@ -66,7 +66,7 @@ let moves = {
 	},
 	'rest': {
 		name: 'REST',
-		damage: -.6,
+		damage: -.3,
 		target: 'self'
 	},
 	'solar beam': {
