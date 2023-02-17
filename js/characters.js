@@ -15,7 +15,7 @@ class Pokemon {
 			this.decrementHealth(Math.round(this.maxhealth * move.damage));
 		} else {
 			var criticalHit = Math.floor((Math.random() * 101) + 1);		
-			if(criticalHit > 93){
+			if(criticalHit > 10){
 				crit = 1.5;
 			}
 			target.decrementHealth(move.damage * crit);

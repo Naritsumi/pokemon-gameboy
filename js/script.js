@@ -12,7 +12,7 @@ var x = 0;
 var battleText1 = '';
 var battleText2 = '';
 var battleEnemyText = '';
-var speed = 50;
+var speed = 45;
 var crit = 1;
 
 addListeners();
@@ -121,8 +121,8 @@ function runButton() {
 	}, 2500);
 }
 
-function writeScape() {	
-	var txt = 'You can\'t SCAPE!';	
+function writeScape() {
+	var txt = 'You can\'t SCAPE!';
 	if (i < txt.length) {
 		document.getElementById('text').innerHTML += txt.charAt(i);
 		i++;
@@ -152,10 +152,6 @@ function attack1() {
 	document.getElementById('battletext').style.zIndex = '1';
 
 	battleText1 = playerPokemon.pokename + ' used ' + playerPokemon.moves[0].name + '!';
-	//aquí añadir algo cuando es crit
-	if (crit == 1.5) {
-		battleText1 += " Critical move!";
-	}
 
 	writeAttack1();
 
@@ -166,6 +162,9 @@ function attack1() {
 			//if (playerPokemon.moves[0].damage >= 40) {
 			if (crit == 1.5) {
 				attack1sfx.play();
+				//clearText();
+				//battleText1 = "Critical hit!";
+				//writeAttack1();
 			} else {
 				attack2sfx.play();
 			}
@@ -184,8 +183,7 @@ function attack1() {
 			showPokemon();
 			enemyAttack();
 			addListeners();
-			x = 0;
-			document.getElementById('battletext').innerHTML = '';
+			clearText();
 		}, 1000);
 	}, 2800);
 }
@@ -234,15 +232,8 @@ function attack2() {
 			showPokemon();
 			enemyAttack();
 			addListeners();
-			x = 0;
-			document.getElementById('battletext').innerHTML = '';
+			clearText();
 		}, 1000);
-		/*
-		removeListeners();
-		showPokemon();
-		enemyAttack();
-		addListeners();*/
-		//document.getElementById('battletext').style.zIndex = '-1';
 		document.getElementById('battletext').innerHTML = ('');
 	}, 3000);
 }
@@ -262,12 +253,9 @@ function enemyAttack() {
 	document.getElementById('menu').style.zIndex = '1';
 	document.getElementById('battletext').style.zIndex = '1';
 	setTimeout(function () {
-		//document.getElementById('battletext').innerHTML = ('Enemy ' + enemyPokemon.pokename + ' used ' + enemyPokemon.moves[attackMove].name + '!');
-
 		battleEnemyText = 'Enemy ' + enemyPokemon.pokename + ' used ' + enemyPokemon.moves[attackMove].name + '!';
 
 		writeEnemyAttack();
-
 	}, 1200);
 	setTimeout(function () {
 		enemyPokemon.attack(playerPokemon, enemyPokemon.moves[attackMove]);
@@ -301,6 +289,11 @@ function writeEnemyAttack() {
 		x++;
 		setTimeout(writeEnemyAttack, speed);
 	}
+}
+
+function clearText() {
+	x = 0;
+	document.getElementById('battletext').innerHTML = '';
 }
 
 function addListeners() {
