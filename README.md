@@ -27,6 +27,7 @@ Please head to [BluePokemon-Battle](https://bluepokemon-gameboy.netlify.app/) fo
 Todo work:
 -------------------
 - [X] Crit hits (only our pkmn)
-- [ ] Fainted msg
+- [X] Fainted msg
 - [ ] Victory or lose screen
 - [X] Nerf rest 
+- [ ] Optimize code (run slow)
