@@ -11,12 +11,16 @@ class Pokemon {
 	}
 
 	attack(target, move) {
+		crit = 1;
 		if (move.target == 'self') {
 			this.decrementHealth(Math.round(this.maxhealth * move.damage));
 		} else {
-			var criticalHit = Math.floor((Math.random() * 101) + 1);		
-			if(criticalHit > 10){
-				crit = 1.5;
+			// solo hace crítico nuestro pokemon
+			if(target == enemyPokemon){
+				var criticalHit = Math.floor((Math.random() * 101) + 1);		
+				if(criticalHit > 3){
+					crit = 1.5;
+				}
 			}
 			target.decrementHealth(move.damage * crit);
 			console.log(crit)

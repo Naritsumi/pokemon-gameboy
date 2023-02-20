@@ -12,6 +12,7 @@ var x = 0;
 var battleText1 = '';
 var battleText2 = '';
 var battleEnemyText = '';
+var criticalText = 'Critical hit!';
 var speed = 45;
 var crit = 1;
 
@@ -162,9 +163,6 @@ function attack1() {
 			//if (playerPokemon.moves[0].damage >= 40) {
 			if (crit == 1.5) {
 				attack1sfx.play();
-				//clearText();
-				//battleText1 = "Critical hit!";
-				//writeAttack1();
 			} else {
 				attack2sfx.play();
 			}
@@ -174,8 +172,6 @@ function attack1() {
 				document.getElementById('pkmn').style.animation = '';
 				enemyPokemon.faint(enemyPokemon, enemyParty);
 			}, 1000);
-			//console.log('health:'+enemyPokemon.health);
-			//enemyPokemon.faint(enemyPokemon, enemyParty);
 		}
 
 		setTimeout(function () {
@@ -194,6 +190,16 @@ function writeAttack1() {
 		x++;
 		setTimeout(writeAttack1, speed);
 	}
+	setTimeout(function () {
+		if (x == battleText1.length && crit == 1.5) {
+			if(battleText1 == criticalText){
+				return;
+			}
+			clearText();
+			battleText1 = criticalText;		
+			writeAttack1();
+		}
+	}, 1490);
 }
 
 function attack2() {
@@ -244,6 +250,16 @@ function writeAttack2() {
 		x++;
 		setTimeout(writeAttack2, speed);
 	}
+	setTimeout(function () {
+		if (x == battleText2.length && crit == 1.5) {
+			if(battleText2 == criticalText){
+				return;
+			}
+			clearText();
+			battleText2 = criticalText;		
+			writeAttack1();
+		}
+	}, 1490);
 }
 
 function enemyAttack() {
