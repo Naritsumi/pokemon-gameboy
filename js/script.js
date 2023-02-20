@@ -269,13 +269,14 @@ function enemyAttack() {
 	document.getElementById('battletext').style.zIndex = '1';
 
 	if(!enemyAlive){
+		clearText();
 		enemyAlive = true;
 		battleEnemyText = 'Enemy fainted!';
 		writeEnemyAttack();
 		setTimeout(function () {			
 			document.getElementById('menu').style.zIndex = '-1';
 			document.getElementById('battletext').style.zIndex = '-1';
-		}, 3000);
+		}, 2400);
 		return;
 	}
 
