@@ -26,7 +26,7 @@ Please head to [BluePokemon-Battle](https://bluepokemon-gameboy.netlify.app/) fo
 
 Todo work:
 -------------------
-- [ ] Crit hits
-- [ ] Victory or lose screen
+- [X] Crit hits (only our pkmn)
 - [ ] Fainted msg
-- [ ] Nerf rest 
+- [ ] Victory or lose screen
+- [X] Nerf rest 
