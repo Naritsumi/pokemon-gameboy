@@ -17,8 +17,9 @@ class Pokemon {
 		} else {
 			// solo hace crítico nuestro pokemon
 			if(target == enemyPokemon){
-				var criticalHit = Math.floor((Math.random() * 101) + 1);		
-				if(criticalHit > 3){
+				var criticalHit = Math.floor((Math.random() * 101) + 1);	
+				//7%	
+				if(criticalHit > 93){
 					crit = 1.5;
 				}
 			}
@@ -46,6 +47,9 @@ class Pokemon {
 		if (this.health <= 0) {
 			console.log('fainted!');
 			this.alive = false;
+			if(currentPokemon == enemyPokemon){
+				enemyAlive = false;
+			}
 			for (var i = 0; i < party.length; i++) {
 				if (party[i].alive == true) {
 					foundPokemon = true;

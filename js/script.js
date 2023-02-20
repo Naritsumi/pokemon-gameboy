@@ -15,6 +15,7 @@ var battleEnemyText = '';
 var criticalText = 'Critical hit!';
 var speed = 45;
 var crit = 1;
+var enemyAlive = true;
 
 addListeners();
 
@@ -28,7 +29,7 @@ function startButton() {
 		titlesfx.pause();
 		transition();
 		//}, 9000);
-	}, 0);
+	}, 9000);
 }
 
 function transition() {
@@ -39,13 +40,13 @@ function transition() {
 		battlesfx.play();
 		battlesfx.volume = 0.2;
 		//}, 1000);
-	}, 0);
+	}, 1000);
 
 	setTimeout(function () {
 		document.getElementById('black').style.zIndex = '-1';
 		initGame();
 		//}, 3800)	
-	}, 0)
+	}, 3800)
 }
 
 //Starts the game and sets the beginning pokemon at random
@@ -153,7 +154,6 @@ function attack1() {
 	document.getElementById('battletext').style.zIndex = '1';
 
 	battleText1 = playerPokemon.pokename + ' used ' + playerPokemon.moves[0].name + '!';
-
 	writeAttack1();
 
 	setTimeout(function () {
@@ -215,7 +215,6 @@ function attack2() {
 	document.getElementById('battletext').style.zIndex = '1';
 
 	battleText2 = playerPokemon.pokename + ' used ' + playerPokemon.moves[1].name + '!';
-
 	writeAttack2();
 
 	setTimeout(function () {
@@ -262,17 +261,29 @@ function writeAttack2() {
 	}, 1490);
 }
 
-function enemyAttack() {
+function enemyAttack() {	
 	var attackMove = Math.floor(Math.random() * enemyPokemon.moves.length);
 
 	document.getElementById('menu').src = './assets/img/pkmnbattle.png';
 	document.getElementById('menu').style.zIndex = '1';
 	document.getElementById('battletext').style.zIndex = '1';
+
+	if(!enemyAlive){
+		enemyAlive = true;
+		battleEnemyText = 'Enemy fainted!';
+		writeEnemyAttack();
+		setTimeout(function () {			
+			document.getElementById('menu').style.zIndex = '-1';
+			document.getElementById('battletext').style.zIndex = '-1';
+		}, 3000);
+		return;
+	}
+
 	setTimeout(function () {
 		battleEnemyText = 'Enemy ' + enemyPokemon.pokename + ' used ' + enemyPokemon.moves[attackMove].name + '!';
-
 		writeEnemyAttack();
 	}, 1200);
+
 	setTimeout(function () {
 		enemyPokemon.attack(playerPokemon, enemyPokemon.moves[attackMove]);
 		if (enemyPokemon.moves[attackMove].target != 'self') {
@@ -287,8 +298,9 @@ function enemyAttack() {
 
 		setTimeout(function () {
 			showPokemon();
-			x = 0;
-			document.getElementById('battletext').innerHTML = '';
+			clearText();
+			// x = 0;
+			// document.getElementById('battletext').innerHTML = '';
 		}, 1000);
 
 		setTimeout(function () {
