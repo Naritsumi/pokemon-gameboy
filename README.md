@@ -31,5 +31,5 @@ Todo work:
 - [ ] Victory or lose screen
 - [X] Nerf rest 
 - [ ] Optimize code (run slow)
-- [ ] Repeat music
-- [ ] Prevent to select text
+- [X] Repeat music
+- [X] Prevent to select text
