@@ -46,6 +46,7 @@ button:focus {
 	height: 487px;
 	left: 691px;
 	top: 236px;
+	user-select: none
 }
 
 #battle {
