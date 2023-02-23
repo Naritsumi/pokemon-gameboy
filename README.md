@@ -28,8 +28,9 @@ Todo work:
 -------------------
 - [X] Crit hits (only our pkmn)
 - [X] Fainted msg
-- [ ] Victory screen (you can't lose)
+- [ ] Victory screen (you can't lose) 
 - [X] Nerf rest 
 - [ ] Optimize code (run slow)
 - [X] Repeat music
 - [X] Prevent to select text
+- [ ] Change colors (used wrong palete)
