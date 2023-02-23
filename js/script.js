@@ -142,6 +142,7 @@ function cancelButton() {
 }
 
 function attack1() {
+	clearText();
 	buttonsfx.play();
 	playerPokemon.attack(enemyPokemon, playerPokemon.moves[0]);
 	//aquí vemos si hace crítico o no
@@ -162,7 +163,7 @@ function attack1() {
 			//me gustaría añadir varios tipos de sonidos, para los golpes fuertes, fuertes con crit
 			//débiles, y débiles con crit
 			//if (playerPokemon.moves[0].damage >= 40) {
-			if (crit == 1.5) {
+			if (crit != 1) {
 				attack1sfx.play();
 			} else {
 				attack2sfx.play();
@@ -193,17 +194,18 @@ function writeAttack1() {
 	}
 	setTimeout(function () {
 		if (x == battleText1.length && crit == 1.5) {
-			if(battleText1 == criticalText){
+			if (battleText1 == criticalText) {
 				return;
 			}
 			clearText();
-			battleText1 = criticalText;		
+			battleText1 = criticalText;
 			writeAttack1();
 		}
 	}, 1490);
 }
 
 function attack2() {
+	clearText();
 	buttonsfx.play();
 	playerPokemon.attack(enemyPokemon, playerPokemon.moves[1]);
 	document.getElementById('attackcancel').style.zIndex = '-1';
@@ -252,29 +254,29 @@ function writeAttack2() {
 	}
 	setTimeout(function () {
 		if (x == battleText2.length && crit == 1.5) {
-			if(battleText2 == criticalText){
+			if (battleText2 == criticalText) {
 				return;
 			}
 			clearText();
-			battleText2 = criticalText;		
+			battleText2 = criticalText;
 			writeAttack1();
 		}
 	}, 1490);
 }
 
-function enemyAttack() {	
+function enemyAttack() {
 	var attackMove = Math.floor(Math.random() * enemyPokemon.moves.length);
 
 	document.getElementById('menu').src = './assets/img/pkmnbattle.png';
 	document.getElementById('menu').style.zIndex = '1';
 	document.getElementById('battletext').style.zIndex = '1';
 
-	if(!enemyAlive){
+	if (!enemyAlive) {
 		clearText();
 		enemyAlive = true;
 		battleEnemyText = 'Enemy fainted!';
 		writeEnemyAttack();
-		setTimeout(function () {			
+		setTimeout(function () {
 			document.getElementById('menu').style.zIndex = '-1';
 			document.getElementById('battletext').style.zIndex = '-1';
 		}, 2400);
@@ -300,9 +302,6 @@ function enemyAttack() {
 
 		setTimeout(function () {
 			showPokemon();
-			clearText();
-			// x = 0;
-			// document.getElementById('battletext').innerHTML = '';
 		}, 1000);
 
 		setTimeout(function () {
@@ -346,9 +345,11 @@ function removeListeners() {
 }
 
 function endGame() {
-	document.getElementById('ending').src = './assets/img/pkmnvictory.png';
-	document.getElementById('ending').style.zIndex = '1';
-	document.getElementById('endingtext').style.zIndex = '1';
-	battlesfx.pause();
-	victorysfx.play();
+	setTimeout(function () {
+		document.getElementById('ending').src = './assets/img/pkmnvictorywithred.png';
+		document.getElementById('ending').style.zIndex = '1';
+		document.getElementById('endingtext').style.zIndex = '1';
+		battlesfx.pause();
+		victorysfx.play();
+	}, 7000);
 }
