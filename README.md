@@ -34,3 +34,4 @@ Todo work:
 - [X] Repeat music
 - [X] Prevent to select text
 - [ ] Change colors (used wrong palete)
+- [ ] Add potions
