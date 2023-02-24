@@ -345,11 +345,25 @@ function removeListeners() {
 }
 
 function endGame() {
+	document.getElementById('enemy-hp-bar').style.width = 0;
 	setTimeout(function () {
+		clearText();
 		document.getElementById('ending').src = './assets/img/pkmnvictorywithred.png';
 		document.getElementById('ending').style.zIndex = '1';
-		document.getElementById('endingtext').style.zIndex = '1';
+		//document.getElementById('endingtext').style.zIndex = '1';
+		document.getElementById('battletext').style.zIndex = '1';
+		writeVictoryText();
 		battlesfx.pause();
 		victorysfx.play();
-	}, 7000);
+	}, 6000);
+}
+
+function writeVictoryText() {
+	var battleEnemyText = 'I can\'t believe I lost to YOU!';
+	var y = 0;
+	if (y < battleEnemyText.length) {
+		document.getElementById('battletext').innerHTML += battleEnemyText.charAt(y);
+		y++;
+		setTimeout(writeVictoryText, speed);
+	}
 }
