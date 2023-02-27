@@ -33,7 +33,7 @@ Todo work:
 - [X] Repeat music
 - [X] Prevent to select text
 - [ ] Icon
-- [ ] Edit volume
+- [X] Edit volume
 - [ ] Optimize code (run slow)
 - [ ] Change colors (used wrong palete)
 - [ ] Add potions
