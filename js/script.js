@@ -52,7 +52,7 @@ function startButton() {
 		titlesfx.pause();
 		transition();
 		//}, 9000);
-	}, 9000);
+	}, 0);
 }
 
 // Black image transition to battle
@@ -64,13 +64,13 @@ function transition() {
 		battlesfx.play();
 		battlesfx.loop = true;
 		//}, 1000);
-	}, 1000);
+	}, 0);
 
 	setTimeout(function () {
 		document.getElementById('black').style.zIndex = '-1';
 		initGame();
 		//}, 3800)	
-	}, 3800)
+	}, 0)
 }
 
 //Starts the game and sets the beginning pokemon at random
@@ -119,12 +119,25 @@ function fightButton() {
 	document.getElementById('attack2').style.zIndex = '1';
 }
 
-function switchPokemon() {
-	console.log('switched pokemon');
+function cancelButton() {
+	buttonsfx.play();
+	document.getElementById('b2').src = '';
+	document.getElementById('attackcancel').style.zIndex = '-1';
+	document.getElementById('attack1').style.zIndex = '-1';
+	document.getElementById('attack2').style.zIndex = '-1';
 }
 
 function pkmnButton() {
+	buttonsfx.play();
+	document.getElementById('menu').src = './assets/img/pkmnbattle5.png';
+	document.getElementById('menu').style.zIndex = '1';
+	document.getElementById('pkmncancel').style.zIndex = '1';
+}
 
+function pkmnCancelButton() {
+	buttonsfx.play();
+	document.getElementById('menu').src = '';
+	document.getElementById('pkmncancel').style.zIndex = '-1';
 }
 
 function itemButton() {
@@ -151,14 +164,6 @@ function writeScape() {
 		i++;
 		setTimeout(writeScape, speed);
 	}
-}
-
-function cancelButton() {
-	buttonsfx.play();
-	document.getElementById('b2').src = '';
-	document.getElementById('attackcancel').style.zIndex = '-1';
-	document.getElementById('attack1').style.zIndex = '-1';
-	document.getElementById('attack2').style.zIndex = '-1';
 }
 
 function attack1() {
@@ -375,6 +380,8 @@ function addListeners() {
 	document.getElementById('startbutton').addEventListener('click', startButton);
 	document.getElementById('fight').addEventListener('click', fightButton);
 	document.getElementById('attackcancel').addEventListener('click', cancelButton);
+	document.getElementById('pkmncancel').addEventListener('click', pkmnCancelButton);
+	document.getElementById('pkmnbtn').addEventListener('click', pkmnButton);
 	document.getElementById('attack1').addEventListener('click', attack1);
 	document.getElementById('attack2').addEventListener('click', attack2);
 	//document.getElementById('items').addEventListener('click', potion);
@@ -384,6 +391,8 @@ function addListeners() {
 function removeListeners() {
 	document.getElementById('fight').removeEventListener('click', fightButton);
 	document.getElementById('attackcancel').removeEventListener('click', cancelButton);
+	document.getElementById('pkmncancel').removeEventListener('click', pkmnCancelButton);
+	document.getElementById('pkmnbtn').removeEventListener('click', pkmnButton);
 	document.getElementById('attack1').removeEventListener('click', attack1);
 	document.getElementById('attack2').removeEventListener('click', attack2);
 	// document.getElementById('items').removeEventListener('click', potion);

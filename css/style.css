@@ -321,6 +321,20 @@ button:focus {
 	z-index: -1;
 }
 
+#pkmncancel {
+	position: absolute;
+	font-family: 'pokemon-font', monospace;
+	font-size: 25px;
+	left: 158px;
+	top: 83px;
+	width: 77px;
+	height: 28px;
+	background: transparent;
+	border: none !important;
+	color: #282d00;
+	z-index: -1;
+}
+
 /*
 #runmenu {*/
 #menu {
