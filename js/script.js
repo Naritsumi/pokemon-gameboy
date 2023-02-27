@@ -14,27 +14,46 @@ var battleText2 = '';
 var battleEnemyText = '';
 var criticalText = 'Critical hit!';
 var battleFinalVerse = 'I can\'t believe I lost to YOU!';
+var noRun = 'You can\'t SCAPE!';
 var speed = 45;
 var crit = 1;
 var enemyAlive = true;
 var foundPokemon = true;
 var endBattle = false;
 
+const currentVolume = document.querySelector("#volume");
+currentVolume.addEventListener("change", changeVolume);
+
 addListeners();
 
+// Mute Sound
+function muteSound() {
+	track.volume = 0;
+	showVolume.innerHTML = 0;
+	currentVolume.value = 0;
+  }
+
+// Change Volume
+function changeVolume() {
+	titlesfx.volume = currentVolume.value / 100;
+	battlesfx.volume = currentVolume.value / 100;
+	victorysfx.volume = currentVolume.value / 100;
+}
+
+// Start our game
 function startButton() {
 	document.getElementById('startbutton').style.zIndex = '-1';
 	document.getElementById('battle').style.visibility = 'visible';
 	document.getElementById('opening').style.zIndex = '1';
 	titlesfx.play();
-	titlesfx.volume = 0.4;
 	setTimeout(function () {
 		titlesfx.pause();
 		transition();
 		//}, 9000);
-	}, 0);
+	}, 9000);
 }
 
+// Black image transition to battle
 function transition() {
 	document.getElementById('black').src = './assets/img/black.png';
 	document.getElementById('black').style.zIndex = '1';
@@ -42,15 +61,14 @@ function transition() {
 	setTimeout(function () {
 		battlesfx.play();
 		battlesfx.loop = true;
-		battlesfx.volume = 0.2;
 		//}, 1000);
-	}, 0);
+	}, 1000);
 
 	setTimeout(function () {
 		document.getElementById('black').style.zIndex = '-1';
 		initGame();
 		//}, 3800)	
-	}, 0)
+	}, 3800)
 }
 
 //Starts the game and sets the beginning pokemon at random
@@ -113,13 +131,11 @@ function itemButton() {
 
 function runButton() {
 	buttonsfx.play();
-	console.log('run');
 	document.getElementById('menu').src = './assets/img/pkmnrun.png';
 	document.getElementById('menu').style.zIndex = '1';
 	document.getElementById('text').style.zIndex = '1';
 
 	setTimeout(function () {
-		console.log('no run');
 		document.getElementById('menu').style.zIndex = '-1';
 		document.getElementById('text').style.zIndex = '-1';
 		document.getElementById('text').textContent = '';
@@ -128,9 +144,8 @@ function runButton() {
 }
 
 function writeScape() {
-	var txt = 'You can\'t SCAPE!';
-	if (i < txt.length) {
-		document.getElementById('text').innerHTML += txt.charAt(i);
+	if (i < noRun.length) {
+		document.getElementById('text').innerHTML += noRun.charAt(i);
 		i++;
 		setTimeout(writeScape, speed);
 	}
@@ -287,7 +302,7 @@ function enemyAttack() {
 		battleEnemyText = 'Enemy fainted!';
 		writeEnemyAttack();
 		setTimeout(function () {
-			if(endBattle == false){
+			if (endBattle == false) {
 				document.getElementById('menu').style.zIndex = '-1';
 				document.getElementById('battletext').style.zIndex = '-1';
 			}
