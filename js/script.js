@@ -26,22 +26,24 @@ currentVolume.addEventListener("change", changeVolume);
 
 addListeners();
 
-// Mute Sound
-function muteSound() {
-	track.volume = 0;
-	showVolume.innerHTML = 0;
-	currentVolume.value = 0;
-  }
-
 // Change Volume
 function changeVolume() {
 	titlesfx.volume = currentVolume.value / 100;
 	battlesfx.volume = currentVolume.value / 100;
 	victorysfx.volume = currentVolume.value / 100;
+	buttonsfx.volume = currentVolume.value / 100 * 2;
+	attack1sfx.volume = currentVolume.value / 100 * 2;
+	attack2sfx.volume = currentVolume.value / 100 * 2;
 }
 
 // Start our game
 function startButton() {
+	titlesfx.volume = 0.5;
+	battlesfx.volume = 0.5;
+	victorysfx.volume = 0.5;
+	buttonsfx.volume = 0.8;
+	attack1sfx.volume = 1;
+	attack2sfx.volume = 1;
 	document.getElementById('startbutton').style.zIndex = '-1';
 	document.getElementById('battle').style.visibility = 'visible';
 	document.getElementById('opening').style.zIndex = '1';
