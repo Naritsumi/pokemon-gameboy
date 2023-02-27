@@ -46,3 +46,4 @@ Todo work:
 - [ ] Change colors (used wrong palete)
 - [ ] Add potions
 - [ ] Show pokémon team
+- [ ] "Power off" console
