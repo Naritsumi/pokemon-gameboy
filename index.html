@@ -4,50 +4,57 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Pokemon Battle</title>
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link rel="icon" href="./assets/img/pokeballicon.png">
 </head>
+
 <body>
 	<div>
 		<img id="gameboy" src="./assets/img/gb.png">
-			<div id="game-window">
-				<div id="battle">
-						<img id="opening" src="./assets/img/pkmntitle.png">
-						<button id="startbutton" class="hover">CLICK HERE TO START</button>
-						<img id="black" src="">
-						<img id="b1" src="./assets/img/pkmnbattle1.png">
-						<img id="b2" src="">
-						<img id="ending" src="">
-						<!--<button id="endingtext">I can't believe I lost to YOU!</button>-->
-						<img id="pkmnback" src="">
-						<img id="pkmn" src="">
-						<button id="pkmnback-name"></button>
-						<button id="pkmn-name"></button>
-						<button id="pkmnback-level">50</button>
-						<button id="pkmn-level">50</button>
-						<button id="pkmnback-maxhp">100</button>
-						<button id="pkmnback-hp">100</button>
-						<div id="player-hp">
-							<div id="player-hp-bar"></div>
-						</div>
-						<div id="enemy-hp">
-							<div id="enemy-hp-bar"></div>
-						</div>
-						<button id="attack1" class="click hover">Attack1</button>
-						<button id="attack2" class="click hover">Attack2</button>
-						<button id="fight" class="click hover">Fight</button>
-						<button id="items" class="click hover">Items</button>
-						<button id="pkmnbtn" class="click hover">PKMN</button>
-						<button id="run" class="click hover" onclick="writeScape()">Run</button>																		
-						<img id="menu" src="">
-						<p id="text"></p>
-						<p id="battletext"></p>		
-						<button id="attackcancel" class="click hover">CANCEL</button>
-					</div>
+		<div id="game-window">
+			<div id="battle">
+				<img id="opening" src="./assets/img/pkmntitle.png">
+				<button id="startbutton" class="hover">CLICK HERE TO START</button>
+				<img id="black" src="">
+				<img id="b1" src="./assets/img/pkmnbattle1.png">
+				<img id="b2" src="">
+				<img id="ending" src="">
+				<!--<button id="endingtext">I can't believe I lost to YOU!</button>-->
+				<img id="pkmnback" src="">
+				<img id="pkmn" src="">
+				<button id="pkmnback-name"></button>
+				<button id="pkmn-name"></button>
+				<button id="pkmnback-level">50</button>
+				<button id="pkmn-level">50</button>
+				<button id="pkmnback-maxhp">100</button>
+				<button id="pkmnback-hp">100</button>
+				<div id="player-hp">
+					<div id="player-hp-bar"></div>
+				</div>
+				<div id="enemy-hp">
+					<div id="enemy-hp-bar"></div>
+				</div>
+				<button id="attack1" class="click hover">Attack1</button>
+				<button id="attack2" class="click hover">Attack2</button>
+				<button id="fight" class="click hover">Fight</button>
+				<button id="items" class="click hover">Items</button>
+				<button id="pkmnbtn" class="click hover">PKMN</button>
+				<button id="run" class="click hover" onclick="writeScape()">Run</button>
+				<img id="menu" src="">
+				<p id="text"></p>
+				<p id="battletext"></p>
+				<button id="attackcancel" class="click hover">CANCEL</button>
 			</div>
-	</div>	
+		</div>
+		<div class="volume">      
+			<input type="range" id="volume" min="0" max="100" value="50" />
+		</div>
+	</div>
+	</div>
 
 </body>
 <script type="text/javascript" src="./js/items.js"></script>
 <script type="text/javascript" src="./js/moves.js"></script>
 <script type="text/javascript" src="./js/characters.js"></script>
 <script type="text/javascript" src="./js/script.js"></script>
+
 </html>

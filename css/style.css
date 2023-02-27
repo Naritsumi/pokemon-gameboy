@@ -4,20 +4,22 @@
 }
 
 @keyframes blink {
-    0% {
-        opacity:1;
-    }
-    50% {
-        opacity:0;
-    }
-    100% {
-        opacity:1;
-    }
-} 
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
 
 body {
 	background-image: url(../assets/img/background.gif);
-  }
+}
 
 button:focus {
 	outline: none;
@@ -150,7 +152,7 @@ button:focus {
 	left: 322px;
 	border-radius: 1px;
 	width: 161px;
-	line-height: 7px;	
+	line-height: 7px;
 }
 
 #player-hp-bar {
@@ -169,7 +171,7 @@ button:focus {
 #pkmnback {
 	position: relative;
 	left: 16px;
-	top: 152px;	
+	top: 152px;
 }
 
 #pkmn {
@@ -187,11 +189,11 @@ button:focus {
 	position: absolute;
 	font-family: 'pokemon-font', monospace;
 	font-size: 20px;
-    width: 215px;
-    top: 200px;
-    left: 160px;
+	width: 215px;
+	top: 200px;
+	left: 160px;
 	background: transparent;
-    border: none !important;
+	border: none !important;
 	z-index: 1;
 	visibility: visible;
 	animation-name: blink;
@@ -238,8 +240,8 @@ button:focus {
 	width: 131px;
 	height: 28px;
 	background: transparent;
-    border: none !important;
-    color: rgba(0,0,0,0);
+	border: none !important;
+	color: rgba(0, 0, 0, 0);
 }
 
 #items {
@@ -250,7 +252,7 @@ button:focus {
 	height: 28px;
 	background: transparent;
 	border: none !important;
-	color: rgba(0,0,0,0);
+	color: rgba(0, 0, 0, 0);
 }
 
 #pkmnbtn {
@@ -261,7 +263,7 @@ button:focus {
 	height: 28px;
 	background: transparent;
 	border: none !important;
-	color: rgba(0,0,0,0);
+	color: rgba(0, 0, 0, 0);
 }
 
 #run {
@@ -272,7 +274,7 @@ button:focus {
 	height: 28px;
 	background: transparent;
 	border: none !important;
-	color: rgba(0,0,0,0);
+	color: rgba(0, 0, 0, 0);
 }
 
 #attack1 {
@@ -330,6 +332,7 @@ button:focus {
 	position: relative;
 	top: -180px;
 }
+
 /*
 #runtext {*/
 #text {
@@ -363,31 +366,102 @@ button:focus {
 }
 
 .slide-in {
-    animation: slide-in 0.5s forwards;
-    -webkit-animation: slide-in 0.5s forwards;
+	animation: slide-in 0.5s forwards;
+	-webkit-animation: slide-in 0.5s forwards;
 }
-    
+
 @keyframes slide-in {
-    0% { transform: translateX(0%); }
-    100% { transform: translateX(10%); }
+	0% {
+		transform: translateX(0%);
+	}
+
+	100% {
+		transform: translateX(10%);
+	}
 }
 
 @-webkit-keyframes slide-in {
-    0% { -webkit-transform: translateX(0%); }
-    100% { -webkit-transform: translateX(-100%); }
+	0% {
+		-webkit-transform: translateX(0%);
+	}
+
+	100% {
+		-webkit-transform: translateX(-100%);
+	}
 }
-  
+
 .slide-out {
-    animation: slide-out 0.5s forwards;
-    -webkit-animation: slide-out 0.5s forwards;
+	animation: slide-out 0.5s forwards;
+	-webkit-animation: slide-out 0.5s forwards;
 }
 
 @keyframes slide-out {
-    0% { transform: translateX(0%); }
-    100% { transform: translateX(-25%); }
+	0% {
+		transform: translateX(0%);
+	}
+
+	100% {
+		transform: translateX(-25%);
+	}
 }
 
 @-webkit-keyframes slide-out {
-    0% { -webkit-transform: translateX(0%); }
-    100% { -webkit-transform: translateX(-100%); }
+	0% {
+		-webkit-transform: translateX(0%);
+	}
+
+	100% {
+		-webkit-transform: translateX(-100%);
+	}
+}
+
+.volume {
+	position: absolute;
+	padding: 40px 0px;
+	margin: 700px 913px;
+}
+
+/* Chrome */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	input[type='range'] {
+		overflow: hidden;
+		width: 80px;
+		-webkit-appearance: none;
+		background: #1a0f80;
+	}
+
+	input[type='range']::-webkit-slider-runnable-track {
+		height: 10px;
+		-webkit-appearance: none;
+		background: #b320b3;
+		margin-top: -1px;
+	}
+
+	input[type='range']::-webkit-slider-thumb {
+		width: 10px;
+		height: 10px;
+		border-radius: 20px;
+		-webkit-appearance: none;
+		cursor: ew-resize;
+		background: rgb(218, 218, 218);
+		box-shadow: -80px 0 0 80px #1a0f80;
+	}
+
+	/** FF*/
+	input[type="range"]::-moz-range-progress {
+		background-color: #1a0f80;
+	}
+
+	input[type="range"]::-moz-range-track {
+		background-color: #b320b3;
+	}
+
+	/* IE*/
+	input[type="range"]::-ms-fill-lower {
+		background-color: #1a0f80;
+	}
+
+	input[type="range"]::-ms-fill-upper {
+		background-color: #b320b3;
+	}
 }
