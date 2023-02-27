@@ -2,10 +2,10 @@
 
 # Blue Pokemon - Game Boy
 
-
+<img src="https://raw.githubusercontent.com/Naritsumi/pokemon-gameboy/main/assets/img/intro.gif">
   
 </div>
- 
+
 ## Introduction
 
 Pokemon battle system for game design practice using only HTML, CSS, and JavaScript
