@@ -1,3 +1,11 @@
+<div align="center">
+
+# Blue Pokemon - Game Boy
+
+
+  
+</div>
+ 
 ## Introduction
 
 Pokemon battle system for game design practice using only HTML, CSS, and JavaScript
@@ -37,3 +45,4 @@ Todo work:
 - [ ] Optimize code (run slow)
 - [ ] Change colors (used wrong palete)
 - [ ] Add potions
+- [ ] Show pokémon team
