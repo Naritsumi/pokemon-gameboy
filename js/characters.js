@@ -45,7 +45,7 @@ class Pokemon {
 	}
 	// Faint function will pull the next pokemon in the array into the battle
 	faint(currentPokemon, party) {
-		var foundPokemon = false;
+		foundPokemon = false;
 		if (this.health <= 0) {
 			console.log('fainted!');
 			this.alive = false;
@@ -62,6 +62,7 @@ class Pokemon {
 			}
 
 			if (foundPokemon == false) {
+				endBattle = true;
 				endGame();
 			}
 			return currentPokemon;

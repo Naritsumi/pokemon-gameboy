@@ -13,9 +13,12 @@ var battleText1 = '';
 var battleText2 = '';
 var battleEnemyText = '';
 var criticalText = 'Critical hit!';
+var battleFinalVerse = 'I can\'t believe I lost to YOU!';
 var speed = 45;
 var crit = 1;
 var enemyAlive = true;
+var foundPokemon = true;
+var endBattle = false;
 
 addListeners();
 
@@ -172,7 +175,10 @@ function attack1() {
 			//se ejecuta al pasar 1seg
 			setTimeout(function () {
 				document.getElementById('pkmn').style.animation = '';
-				enemyPokemon.faint(enemyPokemon, enemyParty);
+				if (foundPokemon == true) {
+					//si encontró pokemon
+					enemyPokemon.faint(enemyPokemon, enemyParty);
+				}
 			}, 1000);
 		}
 
@@ -222,7 +228,7 @@ function attack2() {
 
 	setTimeout(function () {
 		if (playerPokemon.moves[1].target != 'self') {
-			if (playerPokemon.moves[1].damage >= 40) {
+			if (crit != 1) {
 				attack1sfx.play();
 			} else {
 				attack2sfx.play();
@@ -231,7 +237,10 @@ function attack2() {
 			//Reset sprite
 			setTimeout(function () {
 				document.getElementById('pkmn').style.animation = '';
-				enemyPokemon.faint(enemyPokemon, enemyParty);
+				if (foundPokemon == true) {
+					//si encontró pokemon
+					enemyPokemon.faint(enemyPokemon, enemyParty);
+				}
 			}, 1000);
 		}
 
@@ -242,7 +251,7 @@ function attack2() {
 			addListeners();
 			clearText();
 		}, 1000);
-		document.getElementById('battletext').innerHTML = ('');
+		//document.getElementById('battletext').innerHTML = ('');
 	}, 3000);
 }
 
@@ -271,14 +280,17 @@ function enemyAttack() {
 	document.getElementById('menu').style.zIndex = '1';
 	document.getElementById('battletext').style.zIndex = '1';
 
+	//enemigo muerto, para que no ataque
 	if (!enemyAlive) {
 		clearText();
 		enemyAlive = true;
 		battleEnemyText = 'Enemy fainted!';
 		writeEnemyAttack();
 		setTimeout(function () {
-			document.getElementById('menu').style.zIndex = '-1';
-			document.getElementById('battletext').style.zIndex = '-1';
+			if(endBattle == false){
+				document.getElementById('menu').style.zIndex = '-1';
+				document.getElementById('battletext').style.zIndex = '-1';
+			}
 		}, 2400);
 		return;
 	}
@@ -320,9 +332,26 @@ function writeEnemyAttack() {
 	}
 }
 
-function clearText() {
-	x = 0;
-	document.getElementById('battletext').innerHTML = '';
+function endGame() {
+	document.getElementById('enemy-hp-bar').style.width = 0;
+
+	setTimeout(function () {
+		clearText();
+		battlesfx.pause();
+		victorysfx.play();
+		document.getElementById('ending').src = './assets/img/pkmnvictorywithred.png';
+		document.getElementById('ending').style.zIndex = '1';
+		document.getElementById('battletext').style.zIndex = '1';
+		writeVictoryText();
+	}, 6800);
+}
+
+function writeVictoryText() {
+	if (x < battleFinalVerse.length) {
+		document.getElementById('battletext').innerHTML += battleFinalVerse.charAt(x);
+		x++;
+		setTimeout(writeVictoryText, speed);
+	}
 }
 
 function addListeners() {
@@ -344,26 +373,7 @@ function removeListeners() {
 	document.getElementById('run').addEventListener('click', runButton);
 }
 
-function endGame() {
-	document.getElementById('enemy-hp-bar').style.width = 0;
-	setTimeout(function () {
-		clearText();
-		document.getElementById('ending').src = './assets/img/pkmnvictorywithred.png';
-		document.getElementById('ending').style.zIndex = '1';
-		//document.getElementById('endingtext').style.zIndex = '1';
-		document.getElementById('battletext').style.zIndex = '1';
-		writeVictoryText();
-		battlesfx.pause();
-		victorysfx.play();
-	}, 6000);
-}
-
-function writeVictoryText() {
-	var battleEnemyText = 'I can\'t believe I lost to YOU!';
-	var y = 0;
-	if (y < battleEnemyText.length) {
-		document.getElementById('battletext').innerHTML += battleEnemyText.charAt(y);
-		y++;
-		setTimeout(writeVictoryText, speed);
-	}
+function clearText() {
+	x = 0;
+	document.getElementById('battletext').innerHTML = '';
 }
