@@ -20,7 +20,7 @@ class Pokemon {
 				var criticalHit = Math.floor((Math.random() * 101) + 1);	
 				//7%	
 				if(criticalHit > 93){
-					//crit = 1.5;
+					crit = 1.5;
 				}
 			}
 			target.decrementHealth(move.damage * crit);
