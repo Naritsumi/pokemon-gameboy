@@ -32,7 +32,7 @@ Todo work:
 - [X] Nerf rest 
 - [X] Repeat music
 - [X] Prevent to select text
-- [ ] Icon
+- [X] Icon
 - [X] Edit volume
 - [ ] Optimize code (run slow)
 - [ ] Change colors (used wrong palete)
