@@ -326,7 +326,7 @@ button:focus {
 	font-family: 'pokemon-font', monospace;
 	font-size: 25px;
 	left: 158px;
-	top: 83px;
+	top: 120px;
 	width: 77px;
 	height: 28px;
 	background: transparent;
@@ -335,8 +335,90 @@ button:focus {
 	z-index: -1;
 }
 
-/*
-#runmenu {*/
+#pkmn1 {
+	position: absolute;
+	font-family: 'pokemon-font', monospace;
+	font-size: 25px;
+	left: 158px;
+	top: 135px;
+	width: 77px;
+	height: 28px;
+	background: transparent;
+	border: none !important;
+	color: #282d00;
+	z-index: -1;
+}
+
+#pkmn2 {
+	position: absolute;
+	font-family: 'pokemon-font', monospace;
+	font-size: 25px;
+	left: 158px;
+	top: 175px;
+	width: 77px;
+	height: 28px;
+	background: transparent;
+	border: none !important;
+	color: #282d00;
+	z-index: -1;
+}
+
+#pkmn3 {
+	position: absolute;
+	font-family: 'pokemon-font', monospace;
+	font-size: 25px;
+	left: 158px;
+	top: 215px;
+	width: 77px;
+	height: 28px;
+	background: transparent;
+	border: none !important;
+	color: #282d00;
+	z-index: -1;
+}
+
+#pkmn4 {
+	position: absolute;
+	font-family: 'pokemon-font', monospace;
+	font-size: 25px;
+	left: 158px;
+	top: 255px;
+	width: 77px;
+	height: 28px;
+	background: transparent;
+	border: none !important;
+	color: #282d00;
+	z-index: -1;
+}
+
+#pkmn5 {
+	position: absolute;
+	font-family: 'pokemon-font', monospace;
+	font-size: 25px;
+	left: 158px;
+	top: 295px;
+	width: 77px;
+	height: 28px;
+	background: transparent;
+	border: none !important;
+	color: #282d00;
+	z-index: -1;
+}
+
+#pkmn6 {
+	position: absolute;
+	font-family: 'pokemon-font', monospace;
+	font-size: 25px;
+	left: 158px;
+	top: 335px;
+	width: 77px;
+	height: 28px;
+	background: transparent;
+	border: none !important;
+	color: #282d00;
+	z-index: -1;
+}
+
 #menu {
 	position: relative;
 	top: -180px;
@@ -347,8 +429,6 @@ button:focus {
 	top: -180px;
 }
 
-/*
-#runtext {*/
 #text {
 	position: absolute;
 	font-family: 'pokemon-font', monospace;

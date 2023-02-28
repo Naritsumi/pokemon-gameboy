@@ -52,7 +52,7 @@ function startButton() {
 		titlesfx.pause();
 		transition();
 		//}, 9000);
-	}, 0);
+	}, 9000);
 }
 
 // Black image transition to battle
@@ -64,13 +64,13 @@ function transition() {
 		battlesfx.play();
 		battlesfx.loop = true;
 		//}, 1000);
-	}, 0);
+	}, 1000);
 
 	setTimeout(function () {
 		document.getElementById('black').style.zIndex = '-1';
 		initGame();
 		//}, 3800)	
-	}, 0)
+	}, 3800)
 }
 
 //Starts the game and sets the beginning pokemon at random
@@ -79,14 +79,19 @@ function initGame() {
 	for (var i = 0; i < 6; i++) {
 		var tempPokemon = pokemon.splice(Math.floor(Math.random() * pokemon.length), 1)[0];
 		tempPokemon.owner = 'player';
+		console.log(i)
 		playerParty.push(tempPokemon);
 		tempPokemon = pokemon.splice(Math.floor(Math.random() * pokemon.length), 1)[0];
 		tempPokemon.owner = 'enemy';
-		enemyParty.push(tempPokemon);
+		enemyParty.push(tempPokemon);		
 	}
+	
 	playerPokemon = playerParty[0];
-	console.log(playerPokemon);
 	enemyPokemon = enemyParty[0];
+
+	for (var x = 1; x < 7; x++) {
+		document.getElementById("pkmn" + x).innerHTML = playerParty[x-1].pokename;
+	}
 
 	showPokemon();
 }
@@ -128,16 +133,23 @@ function cancelButton() {
 }
 
 function pkmnButton() {
+	//habría que colocar en el html los elementos adecuados y cargalos con los pkmn del arraylist
 	buttonsfx.play();
 	document.getElementById('menu').src = './assets/img/pkmnbattle5.png';
 	document.getElementById('menu').style.zIndex = '1';
 	document.getElementById('pkmncancel').style.zIndex = '1';
+	for (var x = 1; x < 7; x++) {
+		document.getElementById("pkmn" + x).style.zIndex = '1';
+	}
 }
 
 function pkmnCancelButton() {
 	buttonsfx.play();
 	document.getElementById('menu').src = '';
-	document.getElementById('pkmncancel').style.zIndex = '-1';
+	document.getElementById('pkmncancel').style.zIndex = '-1';	
+	for (var x = 1; x < 7; x++) {
+		document.getElementById("pkmn" + x).style.zIndex = '-1';
+	}
 }
 
 function itemButton() {
