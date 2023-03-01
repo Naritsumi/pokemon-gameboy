@@ -42,8 +42,8 @@ Todo work:
 - [X] Prevent to select text
 - [X] Icon
 - [X] Edit volume
-- [ ] Optimize code (run slow)
+- [X] Show pokémon team
+- [X] "Power off" console
 - [ ] Change colors (used wrong palete)
+- [ ] Optimize code (run slow)
 - [ ] Add potions
-- [ ] Show pokémon team
-- [ ] "Power off" console
