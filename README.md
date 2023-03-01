@@ -34,16 +34,7 @@ Please head to [BluePokemon-Battle](https://bluepokemon-gameboy.netlify.app/) fo
 
 Todo work:
 -------------------
-- [X] Crit hits (only our pkmn)
-- [X] Fainted msg
-- [X] Victory screen (you can't lose) 
-- [X] Nerf rest 
-- [X] Repeat music
-- [X] Prevent to select text
-- [X] Icon
-- [X] Edit volume
-- [X] Show pokémon team
-- [X] "Power off" console
 - [ ] Change colors (used wrong palete)
 - [ ] Optimize code (run slow)
 - [ ] Add potions
+- [ ] Pokemon team information
