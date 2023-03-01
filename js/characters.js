@@ -19,12 +19,11 @@ class Pokemon {
 			if(target == enemyPokemon){
 				var criticalHit = Math.floor((Math.random() * 101) + 1);	
 				//7%	
-				if(criticalHit > 93){
+				if(criticalHit > 3){
 					crit = 1.5;
 				}
 			}
 			target.decrementHealth(move.damage * crit);
-			console.log(crit)
 		}
 	}
 	decrementHealth(damage) {
@@ -45,7 +44,7 @@ class Pokemon {
 	faint(currentPokemon, party) {
 		foundPokemon = false;
 		if (this.health <= 0) {
-			console.log('fainted!');
+			//console.log('fainted!');
 			this.alive = false;
 			if(currentPokemon == enemyPokemon){
 				enemyAlive = false;
@@ -54,7 +53,7 @@ class Pokemon {
 				if (party[i].alive == true) {
 					foundPokemon = true;
 					currentPokemon = party[i];
-					console.log(currentPokemon.pokename)
+					//console.log(currentPokemon.pokename)
 					break;
 				}
 			}

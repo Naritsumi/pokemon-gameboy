@@ -79,18 +79,17 @@ function initGame() {
 	for (var i = 0; i < 6; i++) {
 		var tempPokemon = pokemon.splice(Math.floor(Math.random() * pokemon.length), 1)[0];
 		tempPokemon.owner = 'player';
-		console.log(i)
 		playerParty.push(tempPokemon);
 		tempPokemon = pokemon.splice(Math.floor(Math.random() * pokemon.length), 1)[0];
 		tempPokemon.owner = 'enemy';
-		enemyParty.push(tempPokemon);		
+		enemyParty.push(tempPokemon);
 	}
-	
+
 	playerPokemon = playerParty[0];
 	enemyPokemon = enemyParty[0];
 
 	for (var x = 1; x < 7; x++) {
-		document.getElementById("pkmn" + x).innerHTML = playerParty[x-1].pokename;
+		document.getElementById("pkmn" + x).innerHTML = playerParty[x - 1].pokename;
 	}
 
 	showPokemon();
@@ -146,7 +145,7 @@ function pkmnButton() {
 function pkmnCancelButton() {
 	buttonsfx.play();
 	document.getElementById('menu').src = '';
-	document.getElementById('pkmncancel').style.zIndex = '-1';	
+	document.getElementById('pkmncancel').style.zIndex = '-1';
 	for (var x = 1; x < 7; x++) {
 		document.getElementById("pkmn" + x).style.zIndex = '-1';
 	}
@@ -285,7 +284,6 @@ function attack2() {
 			addListeners();
 			clearText();
 		}, 1000);
-		//document.getElementById('battletext').innerHTML = ('');
 	}, 3000);
 }
 
@@ -373,11 +371,20 @@ function endGame() {
 		clearText();
 		battlesfx.pause();
 		victorysfx.play();
+		document.getElementById('menu').style.zIndex = '-1';
+		document.getElementById('black').style.zIndex = '1';
 		document.getElementById('ending').src = './assets/img/pkmnvictorywithred.png';
 		document.getElementById('ending').style.zIndex = '1';
 		document.getElementById('battletext').style.zIndex = '1';
 		writeVictoryText();
 	}, 6800);
+	setTimeout(function () {
+		document.getElementById('ending').style.opacity = '0';
+		document.getElementById('battletext').style.opacity = '0';
+	}, 18000);
+	setTimeout(function () {
+		document.getElementById('poweroff').style.zIndex = '1';
+	}, 25000);
 }
 
 function writeVictoryText() {
@@ -386,6 +393,11 @@ function writeVictoryText() {
 		x++;
 		setTimeout(writeVictoryText, speed);
 	}
+}
+
+function clearText() {
+	x = 0;
+	document.getElementById('battletext').innerHTML = '';
 }
 
 function addListeners() {
@@ -411,7 +423,3 @@ function removeListeners() {
 	document.getElementById('run').addEventListener('click', runButton);
 }
 
-function clearText() {
-	x = 0;
-	document.getElementById('battletext').innerHTML = '';
-}
