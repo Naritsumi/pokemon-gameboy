@@ -28,7 +28,7 @@ Please head to [BluePokemon-Battle](https://bluepokemon-gameboy.netlify.app/) fo
 
 * [Justin DeusMalsith](https://deusmalsith.github.io/pokemon-battle-system/).
 
-## Lincense
+## License
 
 :trophy: This source code is available to everyone under the standard [MIT license](https://github.com/microsoft/vscode/blob/main/LICENSE.txt).
 
