@@ -46,7 +46,9 @@ function startButton() {
 	attack2sfx.volume = 1;
 	document.getElementById('startbutton').style.zIndex = '-1';
 	document.getElementById('battle').style.visibility = 'visible';
-	document.getElementById('opening').style.zIndex = '1';
+	document.getElementById('opening').style.zIndex = '2';
+	document.getElementById('black').style.zIndex = '1';
+	document.getElementById('black').src = './assets/img/black.png';
 	titlesfx.play();
 	setTimeout(function () {
 		titlesfx.pause();
@@ -57,8 +59,6 @@ function startButton() {
 
 // Black image transition to battle
 function transition() {
-	document.getElementById('black').src = './assets/img/black.png';
-	document.getElementById('black').style.zIndex = '1';
 	document.getElementById('opening').style.zIndex = '-1';
 	setTimeout(function () {
 		battlesfx.play();
