@@ -372,7 +372,6 @@ function endGame() {
 		battlesfx.pause();
 		victorysfx.play();
 		document.getElementById('menu').style.zIndex = '-1';
-		document.getElementById('black').style.zIndex = '1';
 		document.getElementById('ending').src = './assets/img/pkmnvictorywithred.png';
 		document.getElementById('ending').style.zIndex = '1';
 		document.getElementById('battletext').style.zIndex = '1';
