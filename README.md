@@ -22,7 +22,7 @@ TIP: The only way to heal is by using REST. The only Pokemon with that ability a
 
 ## Usage
 
-Please head to [BluePokemon-Battle](https://bluepokemon-gameboy.netlify.app/) for battle.
+Please head to [BluePokemon-GameBoy](https://bluepokemon-gameboy.netlify.app/) for battle.
 
 ## Resources
 
