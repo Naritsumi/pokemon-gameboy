@@ -206,7 +206,20 @@ button:focus {
 }
 
 #ending {
+	position: absolute;	
+	-webkit-transition: opacity 1s ease-in-out;
+	-moz-transition: opacity 1s ease-in-out;
+	-o-transition: opacity 1s ease-in-out;
+	transition: opacity 1s ease-in-out;
+}
+
+#poweroff {
 	position: absolute;
+	width: 33px;
+	height: 30px;
+	left: 580px;
+	top: 388px;	
+	z-index: -1;
 }
 
 #endingtext {
